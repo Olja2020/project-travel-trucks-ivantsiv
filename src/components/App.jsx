@@ -8,12 +8,12 @@ import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 
 import {Toaster} from 'react-hot-toast';
-const HomePage = lazy(() => import("../pages/homePage/HomePage"));
-const RegistrationPage = lazy(() =>
-  import("../pages/registrationPage/RegistrationPage")
+const CatalogDetailsPage = lazy(() => import("../pages/catalogDetailsPage/CatalogDetailsPage"));
+const CatalogPage = lazy(() =>
+  import("../pages/catalogPage/CatalogPage")
 );
-const LoginPage = lazy(() => import("../pages/loginPage/LoginPage"));
-const ContactsPage = lazy(() => import("../pages/contactsPage/ContactsPage"));
+const HomePage = lazy(() => import("../pages/homePage/HomePage"));
+const NotFoundPage = lazy(() => import("../pages/notFoundPage/NotFoundPage"));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -33,16 +33,16 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/register"
+          path="/catalog"
           element={
             <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegistrationPage />}
+              redirectTo="/catalog"
+              component={<CatalogPage />}
             />
           }
         />
         <Route
-          path="/login"
+          path="/catalog:id"
           element={
             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }

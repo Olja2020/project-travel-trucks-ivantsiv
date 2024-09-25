@@ -1,32 +1,15 @@
-import DocumentTitle from "../../components/DocumentTitle";
-
-const styles = {
-  container: {
-    minHeight: "calc(100vh - 50px)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 52,
-    textAlign: "center",
-  },
+import TravelTrucks from '../../components/travelTrucks/TravelTrucks.jsx';
+import styles from './HomePage.module.css';
+const HomePage = () => {
+  return (
+    <div className={styles.homePage}>
+      <div className={styles.homePageContainer}>
+        <div className={styles.homePageContainerBlock}>
+            <TravelTrucks />
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default function HomePage() {
-  return (
-    <>
-      <DocumentTitle>Home</DocumentTitle>
-
-      <div style={styles.container}>
-        <h1 style={styles.title}>
-        Phonebook welcome page{" "}
-          <span role="img" aria-label="Greeting icon">
-            💁‍♀️
-          </span>
-        </h1>
-      </div>
-    </>
-  );
-}
+export default HomePage;
