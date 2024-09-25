@@ -1,8 +1,8 @@
 
-import DescriptionTravelTrucks from '../../components/DescriptionTravelTrucks/DescriptionTravelTrucks.jsx';
-import FeaturesTravelTrucks from '../../components/FeaturesTravelTrucks/FeaturesTravelTrucks.jsx';
-import ReviewsTravelTrucks from '../../components/ReviewsTravelTrucks/ReviewsTravelTrucks.jsx';
-import BookCampervan from '../../components/BookCampervan/BookCampervan.jsx';
+import DescriptionTravelTrucks from '../../components/descriptionTravelTrucks/DescriptionTravelTrucks.jsx';
+import FeaturesTravelTrucks from '../../components/featuresTravelTrucks/FeaturesTravelTrucks.jsx';
+import ReviewsTravelTrucks from '../../components/reviewsTravelTrucks/ReviewsTravelTrucks.jsx';
+import BookCampervan from '../../components/bookCampervan/BookCampervan.jsx';
 import styles from './CatalogDetailsPage.module.css';
 const CatalogDetailsPage = () => {
   return (

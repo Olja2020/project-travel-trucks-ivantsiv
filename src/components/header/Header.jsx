@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import Logo from '../Logo/Logo.jsx';
+import Logo from '../logo/Logo.jsx';
 import css from './Header.module.css';
 
 const Header = () => {
@@ -8,9 +8,10 @@ const Header = () => {
   return (
     <div className={css.headerSection}>
       <header className={css.headerWrapper}>
-        <div>
+        <div className={css.headerWrapper}>
           <Logo />
         </div>
+        <nav className={css.nav}>
         <div className={css.container_links}>
             <NavLink className={css.link} to="/">
               Home
@@ -19,6 +20,7 @@ const Header = () => {
               Catalog
             </NavLink>
           </div>
+          </nav>
       </header>
     </div>
   );

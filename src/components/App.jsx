@@ -2,11 +2,11 @@ import { useEffect, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
-import { PrivateRoute } from "./PrivateRoute";
+//import { PrivateRoute } from "./PrivateRoute";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
-
+//import Loader from '../components/loader/Loader';
 import {Toaster} from 'react-hot-toast';
 const CatalogDetailsPage = lazy(() => import("../pages/catalogDetailsPage/CatalogDetailsPage"));
 const CatalogPage = lazy(() =>
@@ -42,17 +42,14 @@ export const App = () => {
           }
         />
         <Route
-          path="/catalog:id"
+          path="/catalog/:id"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/catalog" component={<CatalogDetailsPage />} />
           }
         />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-          }
-        />
+        
+         <Route path="*" element={<NotFoundPage />} />
+           
       </Routes>
     </Layout>
   );
