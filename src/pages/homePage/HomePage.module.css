@@ -1,6 +1,6 @@
 .homePage {
   background-color: var(--primary-white);
-  background-image: url('/project-travel-trucks/public/images/Picture.png');
+  background-image: url("../../../public/images/Picture.png");
   background-repeat: no-repeat;
   max-width: var(--container-min-width);
   height: 1374px;
@@ -11,7 +11,8 @@
   padding: 0 20px;
 }
 
-.rightColumn {display: flex;
+.rightColumn {
+  display: flex;
   flex-direction: column;
   width: 280px;
   box-shadow: var(--box-shadow-medium-two);
@@ -25,18 +26,7 @@
   font-size: var(--font-size-smaller);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-relaxed);
-  
 }
-
-/* 
-@media screen and (min-resolution: 192dpi) and (max-width: 767px),
-screen and (min-resolution: 2dppx) and (max-width: 767px),
-screen and (min-device-pixel-ratio: 2) and (max-width: 767px) {
-  .homePage {
-  background: url('../../../public/imgHomePage/Background_element_mobile_2x.png'), url('../../../public/imgHomePage/Botle_mobile_2x.png');
-  background-repeat: no-repeat;
-  }
-} */
 
 .leftColumn {
   padding-top: 310px;
@@ -66,17 +56,6 @@ screen and (min-device-pixel-ratio: 2) and (max-width: 767px) {
 }
 
 @media screen and (min-width: 768px) {
-  .homePage {
-    background-image: url('/project-successful-minds-07/imgHomePage/Background_element_tablet.png'),
-      url('/project-successful-minds-07/imgHomePage/Botle_tablet.png');
-    background-repeat: no-repeat;
-    background-position: bottom, center -20px;
-    max-width: var(--container-medium-width);
-    height: 1280px;
-    margin-top: 40px;
-    padding: 0 32px;
-  }
-
   .leftColumn {
     padding-top: 472px;
   }
@@ -86,42 +65,23 @@ screen and (min-device-pixel-ratio: 2) and (max-width: 767px) {
     flex-direction: column;
     width: 704px;
     padding: 32px 24px 32px 24px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-two);
-      }
+  }
 }
 
-
-
 @media screen and (min-width: 1440px) {
-  .container {
-    max-width: var(--container-max-width);
-    margin-top: 665px;
-  }
-  
-  .rightColumn {display: flex;  
+  .rightColumn {
+    display: flex;
     width: 592px;
     height: 680px;
     padding: 32px 24px 32px 24px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-two);
-      }
-
-  .homePage {
-    background-color: var(--primary-white);
-    background-image: url('/project-successful-minds-07/imgHomePage/Background_element_desctop.png'),
-      url('/project-successful-minds-07/imgHomePage/Botle_desctop.png');
-    background-repeat: no-repeat;
-    background-position: center right 10px, left 50px top 10px;
-    max-width: 1440px;
-    height: 680px;
-    display: flex;
-    align-items: start;
-    flex-direction: row;
   }
 
   .leftColumn {
