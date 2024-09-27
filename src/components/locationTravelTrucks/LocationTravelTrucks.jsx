@@ -1,4 +1,4 @@
-//import css from "./SearchBox.module.css";
+import css from "./LocationTravelTrucks.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectNameFilter } from "../../redux/filters/selectors";
 import { changeFilter } from "../../redux/filters/slice";
@@ -51,15 +51,16 @@ export default function SearchBox() {
   };
 
   return (
-    <div>
-      <h2 className="subtitle1">Location</h2>
+    <div className={css.location}>
+      <h2 className={css.subTitle}>Location</h2>
       <input
         type="text"
-        className="searchInput"
+        className={css.searchInput}
         value={filter}
         onChange={handleFilter}
-        placeholder="Search..."
+        
       />
+      
     </div>
   );
 }

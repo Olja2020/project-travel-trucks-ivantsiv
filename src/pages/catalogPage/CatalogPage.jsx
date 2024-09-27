@@ -1,5 +1,5 @@
 import LocationTravelTrucks from "../../components/locationTravelTrucks/LocationTravelTrucks.jsx";
-import VehicleEquipment from "../../components/vehicleEquipment/VehicleEquipment.jsx";
+import VehicleEquipmentFilters from "../../components/vehicleEquipmentFilters/VehicleEquipmentFilters.jsx";
 import VehicleType from "../../components/vehicleType/VehicleType.jsx";
 import DescriptionTravelTrucks from "../../components/descriptionTravelTrucks/DescriptionTravelTrucks.jsx";
 //import ListItems from "../../components/listItems/ListItems.jsx";
@@ -10,7 +10,7 @@ const CatalogPage = () => {
       <div className={styles.CatalogPageContainer}>
         <div className={styles.CatalogPageContainerBlock}>
           <LocationTravelTrucks />
-          <VehicleEquipment />
+          <VehicleEquipmentFilters />
           <VehicleType />
           <DescriptionTravelTrucks />
           {/* <ListItems /> */}
