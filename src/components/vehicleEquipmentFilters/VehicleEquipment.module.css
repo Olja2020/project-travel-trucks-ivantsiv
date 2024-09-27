@@ -32,9 +32,7 @@ margin-bottom: 40px;
 }
 .filterItem{
     width:112px;
-    
     height: 96px;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +63,10 @@ margin-bottom: 40px;
 
 
 label {
-
+border-radius: 12px;    
+border: 1px solid #DADDE1;
+width:112px;
+height: 96px;
 font-family: Inter;
 font-size: 16px;
 font-weight: 500;
@@ -73,13 +74,28 @@ line-height: 24px;
 letter-spacing: 1.5;
 text-align: center;
 color: #101828;
-
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 
 
-input[type=checkbox] {
-    display: none;
+input[type=checkbox],
+input[type=radio]
+ {
+    
+    width:112px;
+    height:96px;
+    opacity:0;
+    position: absolute;
+    outline: none;
 }
 .bordered  {
     border: 1px solid #E44848;
+}
+
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label{
+    border: 1px solid #E44848 ;
 }

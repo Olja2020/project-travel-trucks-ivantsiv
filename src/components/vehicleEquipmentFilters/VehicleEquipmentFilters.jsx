@@ -171,6 +171,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './VehicleEquipment.module.css';
 import { useState } from 'react';
 
+
 const initialState = {
   campers: [],
   filters: {
@@ -233,7 +234,13 @@ export const removeFromFavorites = (id) => (dispatch) => {
 
 const VehicleEquipmentFilters = () => {
   const [hasBorder, setHasBorder] = useState(false);
+  const [selectedType, setSelectedType] = useState([]); // Зберігає обраний тип
+  const [selectedFilters, setSelectedFilters] = useState([]);
+   
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
 
+  };
   const handleClick = () => {
     setHasBorder(!hasBorder);
   };
@@ -257,14 +264,7 @@ const VehicleEquipmentFilters = () => {
       <div className={css.filterContainer}>
 
         <div className={css.filterItem }>
-          <svg 
-            className={css.mediaIcon} 
-            width="32" 
-            height="32" 
-            aria-label="icon"
-          >
-            <use href="../../../public/symbol-defs.svg#icon-Vector-1"></use>
-          </svg>
+          
           <input 
             className={css.filterItems}
             type="checkbox" 
@@ -273,18 +273,19 @@ const VehicleEquipmentFilters = () => {
             // checked={amenitiesFilter.includes('AC')} 
             onChange={handleAmenitiesChange} 
           />
-          <label htmlFor="ac">AC</label>
-          
-        </div>
-
-        <div className={css.filterItem}><svg 
+          <label htmlFor="ac"><svg 
             className={css.mediaIcon} 
             width="32" 
             height="32" 
             aria-label="icon"
           >
-            <use href="../../../public/symbol-defs.svg#icon-diagram"></use>
-          </svg>
+            <use href="../../../public/symbol-defs.svg#icon-Vector-1"></use>
+          </svg>AC</label>
+          
+        </div>
+
+        <div className={css.filterItem}>
+          
           <input 
             className={css.filterItems}
             type="checkbox" 
@@ -293,17 +294,19 @@ const VehicleEquipmentFilters = () => {
             // checked={amenitiesFilter.includes('Automatic')} 
             onChange={handleAmenitiesChange} 
           />
-          <label htmlFor="Automatic">Automatic</label>
+          <label htmlFor="Automatic"><svg 
+            className={css.mediaIcon} 
+            width="32" 
+            height="32" 
+            aria-label="icon"
+          >
+            <use href="../../../public/symbol-defs.svg#icon-diagram"></use>
+          </svg>Automatic</label>
           
         </div>
 
-        <div className={css.filterItem}><svg 
-            className={css.mediaIcon} 
-            width="32" 
-            height="32"
-            aria-label="icon"
-          >  <use href="../../../public/symbol-defs.svg#icon-Group"></use>
-          </svg>
+        <div className={css.filterItem}>
+          
           <input 
             className={css.filterItems}
             type="checkbox" 
@@ -312,18 +315,18 @@ const VehicleEquipmentFilters = () => {
             // checked={amenitiesFilter.includes('Kitchen')} 
             onChange={handleAmenitiesChange} 
           />
-          <label htmlFor="kitchen">Kitchen</label>
+          <label htmlFor="kitchen"><svg 
+            className={css.mediaIcon} 
+            width="32" 
+            height="32"
+            aria-label="icon"
+          >  <use href="../../../public/symbol-defs.svg#icon-Group"></use>
+          </svg>Kitchen</label>
           
         </div>
 
-        <div className={css.filterItem}><svg 
-            className={css.mediaIcon} 
-            width="32" 
-            height="32" 
-            aria-label="icon"
-          >
-            <use href="../../../public/symbol-defs.svg#icon-tv"></use>
-          </svg>
+        <div className={css.filterItem}>
+          
           <input 
             className={css.filterItems}
             type="checkbox" 
@@ -332,19 +335,19 @@ const VehicleEquipmentFilters = () => {
             // checked={amenitiesFilter.includes('TV')} 
             onChange={handleAmenitiesChange} 
           />
-          <label htmlFor="TV">TV</label>
-          
-        </div>
-
-        <div className={css.filterItem}>
-          <svg 
+          <label htmlFor="TV"><svg 
             className={css.mediaIcon} 
             width="32" 
             height="32" 
             aria-label="icon"
           >
-            <use href="../../../public/symbol-defs.svg#icon-bi_droplet"></use>
-          </svg>
+            <use href="../../../public/symbol-defs.svg#icon-tv"></use>
+          </svg>TV</label>
+          
+        </div>
+
+        <div className={css.filterItem}>
+          
           <input 
             className={css.filterItems}
             type="checkbox" 
@@ -353,7 +356,14 @@ const VehicleEquipmentFilters = () => {
             // checked={amenitiesFilter.includes('Bathroom')} 
             onChange={handleAmenitiesChange} 
           />
-          <label htmlFor="Bathroom">Bathroom</label>
+          <label htmlFor="Bathroom"><svg 
+            className={css.mediaIcon} 
+            width="32" 
+            height="32" 
+            aria-label="icon"
+          >
+            <use href="../../../public/symbol-defs.svg#icon-bi_droplet"></use>
+          </svg>Bathroom</label>
           
         </div>
 
@@ -362,69 +372,76 @@ const VehicleEquipmentFilters = () => {
 
 
       <h3>Vehicle type</h3>
+
       <div className={css.filterContainer}>
          <div className={css.filterItem}> 
-          <svg 
+        
+        <input 
+          className={css.filterItems} 
+          type="radio" 
+          name="vehicleType"
+          id="Van" 
+          value="Van"
+          // checked={selectedType === 'Van'} 
+          
+          onChange={handleAmenitiesChange} 
+        />
+        <label htmlFor="Van">  <svg 
           className={css.mediaIcon} 
           width="32" 
           height="32" 
           aria-label="icon"
         >
           <use href="../../../public/symbol-defs.svg#icon-bi_grid-1x2"></use>
-        </svg>
-        <input 
-          className={css.filterItems} 
-          type="checkbox" 
-          id="Van" 
-          value="Van" 
-          // checked={amenitiesFilter.includes('Van')} 
-          onChange={handleAmenitiesChange} 
-        />
-        <label htmlFor="Van">Van</label>
+        </svg>Van</label>
        
       </div>
 
         
         
         <div className={css.filterItem}>
-          <svg 
+          
+          <input 
+            className={css.filterItems}
+            type="radio" 
+            name="vehicleType"
+            id="Fully Integrated" 
+            value="Fully Integrated" 
+            // checked={selectedType === 'Fully Integrated'}
+             
+            onChange={handleAmenitiesChange} 
+          />
+          <label htmlFor="Fully Integrated"><svg 
             className={css.mediaIcon} 
             width="32" 
             height="32" 
             aria-label="icon"
           >
             <use href="../../../public/symbol-defs.svg#icon-bi_grid"></use>
-          </svg>
-          <input 
-            className={css.filterItems}
-            type="checkbox" 
-            id="Fully Integrated" 
-            value="Fully Integrated" 
-            // checked={amenitiesFilter.includes('Fully Integrated')} 
-            onChange={handleAmenitiesChange} 
-          />
-          <label htmlFor="Fully Integrated">Fully Integrated</label>
+          </svg>Fully Integrated</label>
           
         </div>
 
         <div className={css.filterItem}>
-          <svg 
+          
+          <input 
+            className={`css.filterItems ${selectedType.includes('ac') ? 'bordered' : ''}`}
+            type="radio" 
+            name="vehicleType"
+            id="Alcove" 
+            value="Alcove" 
+            // checked={selectedType === 'Alcove'}
+            
+            onChange={handleAmenitiesChange} 
+          />
+          <label htmlFor="Alcove"><svg 
             className={css.mediaIcon} 
             width="32" 
             height="32" 
             aria-label="icon"
           >
             <use href="../../../public/symbol-defs.svg#icon-bi_grid-3x3-gap"></use>
-          </svg>
-          <input 
-            className={css.filterItems}
-            type="checkbox" 
-            id="Alcove" 
-            value="Alcove" 
-            // checked={amenitiesFilter.includes('Alcove')} 
-            onChange={handleAmenitiesChange} 
-          />
-          <label htmlFor="Alcove">Alcove</label>
+          </svg>Alcove</label>
           
         </div>
         <button type="submit" className={css.filtersBtn}>Search</button>
