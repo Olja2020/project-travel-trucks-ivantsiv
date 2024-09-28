@@ -4,6 +4,7 @@ import VehicleType from "../../components/vehicleType/VehicleType.jsx";
 import DescriptionTravelTrucks from "../../components/descriptionTravelTrucks/DescriptionTravelTrucks.jsx";
 //import ListItems from "../../components/listItems/ListItems.jsx";
 import styles from "./CatalogPage.module.css";
+//import CamperList from "../../components/camperList/CamperList.jsx";
 const CatalogPage = () => {
   return (
     <div className={styles.CatalogPage}>
@@ -13,7 +14,7 @@ const CatalogPage = () => {
           <VehicleEquipmentFilters />
           <VehicleType />
           <DescriptionTravelTrucks />
-          {/* <ListItems /> */}
+           {/* <CamperList />  */}
         </div>
       </div>
     </div>
