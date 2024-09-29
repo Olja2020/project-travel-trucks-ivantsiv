@@ -1,26 +1,20 @@
-import { Suspense } from "react";
-import clsx from "clsx";
-import Header from "../header/Header";
-import { NavLink } from "react-router-dom";
-import css from './Layout.module.css'
-export const Layout = ({ children }) => {
-  const buildLinkClass = ({ isActive }) => {
-    return clsx(css.link, isActive && css.active);
-  };
+// import css from './Layout.module.css';
 
-  <nav className={css.nav}>
-    <NavLink to="/" className={buildLinkClass}>
-      Home
-    </NavLink>
-    <NavLink to="/catalog" className={buildLinkClass}>
-      Catalog
-    </NavLink>
-  </nav>;
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import Header from '../Header/Header';
 
+const Layout = () => {
   return (
-    <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 16px" }}>
+    <>
       <Header />
-      <Suspense fallback={null}>{children}</Suspense>
-    </div>
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+      <Toaster position="top-right" reverseOrder={false} />
+    </>
   );
 };
+
+export default Layout;

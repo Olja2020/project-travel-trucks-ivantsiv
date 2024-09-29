@@ -1,24 +1,50 @@
-import LocationTravelTrucks from "../../components/locationTravelTrucks/LocationTravelTrucks.jsx";
-import VehicleEquipmentFilters from "../../components/vehicleEquipmentFilters/VehicleEquipmentFilters.jsx";
-import VehicleType from "../../components/vehicleType/VehicleType.jsx";
-import DescriptionTravelTrucks from "../../components/descriptionTravelTrucks/DescriptionTravelTrucks.jsx";
-//import ListItems from "../../components/listItems/ListItems.jsx";
-import styles from "./CatalogPage.module.css";
-//import CamperList from "../../components/camperList/CamperList.jsx";
+import css from './CatalogPage.module.css';
+import { fetchCatalog } from '../../redux/campers/operations.js';
+import { useEffect } from 'react';
+import { useDispatch} from 'react-redux';
+// import {
+//   selectCampers,
+//   selectError,
+//   selectIsLoading,
+// } from '../../redux/campers/selectors.js';
+// import { InfinitySpin } from 'react-loader-spinner';
+import CamperList from '../../components/CamperList/CamperList.jsx';
+// import CamperFilterList from '../../components/CamperFilterList/CamperFilterList.jsx';
+//import VehicleEquipment from '../../components/vehicleEquipmentFilters/VehicleEquipmentFilters.jsx';
+import LocationTravelTrucks  from '../../components/LocationTravelTrucks/LocationTravelTrucks.jsx';
+import CamperFilterlist from '../../components/CamperFilterList/CamperFilterList.jsx';
+import FilterForm from '../../components/FilterForm/FilterForm.jsx';
 const CatalogPage = () => {
+  // const campers = useSelector(selectCampers);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCatalog());
+  }, [dispatch]);
+  
+
   return (
-    <div className={styles.CatalogPage}>
-      <div className={styles.CatalogPageContainer}>
-        <div className={styles.CatalogPageContainerBlock}>
-          <LocationTravelTrucks />
-          <VehicleEquipmentFilters />
-          <VehicleType />
-          <DescriptionTravelTrucks />
-           {/* <CamperList />  */}
-        </div>
+    <main className={css.container}>
+      <aside className={css.list}>
+        {/* <LocationTravelTrucks></LocationTravelTrucks>  */}
+         {/* <VehicleEquipment></VehicleEquipment> */}
+         <FilterForm></FilterForm>
+         <CamperFilterlist></CamperFilterlist>
+      </aside>
+      {/* {isLoading && !error && (
+        <InfinitySpin
+          visible={true}
+          width="200"
+          color="#FFC531"
+          ariaLabel="infinity-spin-loading"
+        />
+      )} */}
+      <div className={css.listCampers}>
+        <CamperList/>
       </div>
-    </div>
+    </main>
   );
 };
-
 export default CatalogPage;

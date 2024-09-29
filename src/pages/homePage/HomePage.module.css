@@ -1,11 +1,14 @@
-.homePage {
-  background-image: url("../../../public/images/Picture.png");
+.container {
+  background-image: url(../../../images/Background.jpg);
   background-repeat: no-repeat;
+  color: #F7F7F7;
   width: 1440px;
   height: 696px;
+  padding-left: 64px;
+}
+.title{
 
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 0 64px;
+}
+.description{
+
 }

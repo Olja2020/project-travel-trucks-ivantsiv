@@ -1,56 +1,61 @@
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import css from './Camper.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './Camper.module.css';
 import { setActiveCamperId } from '../../redux/campers/slice.js';
+import { selectActiveCamperId } from '../../redux/campers/selectors.js';
 
 const Camper = ({ camper }) => {
   const dispatch = useDispatch();
+  const activeCamperId = useSelector(selectActiveCamperId);
 
-  // Обработчик для клика по кнопке "Show more"
   const handleDetails = () => {
-    dispatch(setActiveCamperId(camper.id)); // Устанавливаем активный ID
+    dispatch(setActiveCamperId(camper.id));
   };
 
   return (
-    <div className={css.camper}>
+    <div className={styles.camperContainer}>
       <img
-        className={css.image}
-        src={camper.gallery[0].thumb}
-        alt=""
+        className={styles.image}
+        src={camper.gallery[0].original}
+        alt={camper.name}
         width="292px"
         height="320px"
       />
-      <div className={css.info}>
-        <div className={css.textContainer}>
-          <div>
-            <h3 className={css.title}>{camper.name}</h3>
-            <span className={css.price}>&euro;{camper.price}</span>
-            <svg width="32px" height="32px" className={css.favorite}>
-              <use href="/images/icons.svg#iconHeart"></use>
-            </svg>
+      <div className={styles.info}>
+        <div className={styles.textContainer}>
+          <div className={styles.headerInfo}>
+            <h2 className={styles.title}>{camper.name}</h2>
+            <div className={styles.headerInfoRight}>
+              <h2 className={styles.price}>&euro;{camper.price}</h2>
+              <svg width="24px" height="24px" className={styles.favorite}>
+                <use href="/images/icons.svg#iconHeart"></use>
+              </svg>
+            </div>
           </div>
-          <div>
-            <svg width="32px" height="32px">
-              <use href="../../../public/images/icons.svg#"></use>
-            </svg>
-            <span>
-              {camper.rating} ({camper.reviews.length} Reviews)
-            </span>
-            <svg width="32px" height="32px">
-              <use href="../../../public/images/icons.svg#"></use>
-            </svg>
-            <span>{camper.location}</span>
+          <div className={styles.details}>
+            <div className={styles.reviews}>
+              <svg width="16px" height="16px">
+                <use href="/images/icons.svg#iconStart"></use>
+              </svg>
+              <span>
+                {camper.rating} ({camper.reviews.length} Reviews)
+              </span>
+            </div>
+            <div className={styles.location}>
+              <svg width="16px" height="16px">
+                <use href="/images/icons.svg#iconMap"></use>
+              </svg>
+              <span>{camper.location}</span>
+            </div>
           </div>
-          <p>{camper.description}</p>
         </div>
+        <p className={styles.description}>{camper.description}</p>
+        <NavLink to={`/catalog/${camper.id}`} target="blank">
+          <button type="button" className={styles.button} onClick={handleDetails}>
+            Show more
+          </button>
+        </NavLink>
       </div>
-
-      {/* Переход по ссылке */}
-      <NavLink to={`/catalog/${camper.id}`}>
-        <button type="button" className={css.button} onClick={handleDetails}>
-          Show more
-        </button>
-      </NavLink>
     </div>
   );
 };

@@ -1,72 +1,52 @@
-import { lazy, Suspense } from "react";
-import css from "./App.module.css";
+import './App.module.css';
+import Layout from '../Layout/Layout';
 
-import { Route, Routes } from "react-router-dom";
-import { Layout } from "../layout/Layout";
+import { useDispatch, useSelector } from 'react-redux';
+import { lazy, useEffect, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import Loader from "../loader/Loader";
-import { Toaster } from "react-hot-toast";
+// import { refreshUser } from "./redux/auth/operations";
+// import { selectIsRefreshing } from "./redux/auth/selectors";
 
-const CatalogDetailsPage = lazy(() =>
-  import("../../pages/catalogDetailsPage/CatalogDetailsPage")
-);
-const CatalogPage = lazy(() => import("../../pages/catalogPage/CatalogPage"));
-const HomePage = lazy(() => import("../../pages/homePage/HomePage"));
+import { Toaster } from 'react-hot-toast';
+import { InfinitySpin } from 'react-loader-spinner';
+
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const NotFoundPage = lazy(() =>
-  import("../../pages/notFoundPage/NotFoundPage")
+  import('../../pages/NotFoundPage/NotFoundPage')
 );
+const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
+const CamperDetailsPage = lazy(() => import('../../pages/CamperDetailsPage/CamperDetailsPage'));
 
-export const App = () => {
+export default function App() {
+  const dispatch = useDispatch();
+
+  // const isRefreshing = useSelector(selectIsRefreshing);
+
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
+
   return (
-    <div className={css.container}>
-      <Layout>
-        <Toaster position="bottom-center" reverseOrder={false} />
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
+    <>
+      {/* <Suspense fallback={<div className="loader">
+      <InfinitySpin
+        visible={true}
+        width="200"
+        color="#FFC531"
+        ariaLabel="infinity-spin-loading"
+      />
+    </div>}> */}
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
             <Route path="/catalog" element={<CatalogPage />} />
-            <Route path="/catalog/:id" element={<CatalogDetailsPage />} />
+            <Route path="/catalog/:id" element={<CamperDetailsPage />}/>
             <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-      </Layout>
-    </div>
+          </Route>
+        </Routes>
+      {/* </Suspense> */}
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
   );
-};
-//   return clsx(css.link, isActive && css.active);
-// };
-
-// export const App = () => {
-//   return (
-//     <div className={css.container}>
-//       <header className={css.header}>
-//         <p className={css.logo}>
-//           <span role="img" aria-label="computer icon">
-//             💻
-//           </span>{' '}
-//           GoMerch Store
-//         </p>
-
-//         <nav className={css.nav}>
-//           <NavLink to="/" className={buildLinkClass}>
-//             Home
-//           </NavLink>
-//           <NavLink to="/about" className={buildLinkClass}>
-//             About
-//           </NavLink>
-//           <NavLink to="/products" className={buildLinkClass}>
-//             Products
-//           </NavLink>
-//         </nav>
-//       </header>
-
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/about" element={<About />} />
-//         <Route path="/products" element={<Products />} />
-//         <Route path="/products/:id" element={<ProductDetails />} />
-//         <Route path="*" element={<NotFound />} />
-//       </Routes>
-//     </div>
-//   );
-// };
+}

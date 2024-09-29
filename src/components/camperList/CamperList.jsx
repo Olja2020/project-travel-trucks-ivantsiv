@@ -1,57 +1,53 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Camper from '../camper/Camper';
-import css from './CamperList.module.css';
+import Camper from '../Camper/Camper';
+import styles from './CamperList.module.css';
 import {
   selectError,
   selectIsLoading,
   selectCampers,
 } from '../../redux/campers/selectors';
-import { InfinitySpin } from 'react-loader-spinner';
+import { ClipLoader } from 'react-spinners';
 
 const CamperList = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const campers = useSelector(selectCampers);
 
-  // Локальное состояние для отслеживания количества отображаемых элементов
-  const [visibleCampers, setVisibleCampers] = useState(4); // Начальное количество элементов
+ 
+  const [visibleCampers, setVisibleCampers] = useState(4); 
 
-  // Обработчик для кнопки "Load More"
+  
   const handleLoadMore = () => {
-    setVisibleCampers((prevVisibleCampers) => prevVisibleCampers + 4); // Увеличиваем на 5 элементов
+    setVisibleCampers((prevVisibleCampers) => prevVisibleCampers + 4); // Збільшуємо на 4 елементи
   };
 
   return (
-    <div>
+    <>
       {isLoading && !error && (
-        <InfinitySpin
-          visible={true}
-          width="200"
-          color="#FFC531"
-          ariaLabel="infinity-spin-loading"
-        />
+        <div className={styles.loaderContainer}>
+          <ClipLoader color="#FFC531" size={50} />
+        </div>
       )}
 
-      <ul className={css.camperList}>
+      <ul className={styles.camperList}>
         {campers.slice(0, visibleCampers).map((camper) => (
-          <li key={camper.id} className={css.camperItem}>
+          <li key={camper.id} className={styles.camperItem}>
             <Camper camper={camper} />
           </li>
         ))}
       </ul>
 
-      {/* Если есть ещё элементы для отображения, показываем кнопку "Load More" */}
+     
       {visibleCampers < campers.length && (
-        <button onClick={handleLoadMore} className={css.loadMoreBtn}>
+        <button onClick={handleLoadMore} className={styles.loadMoreBtn}>
           Load More
         </button>
       )}
 
-      {error && <p className={css.error}>Error loading campers: {error}</p>}
-    </div>
+      {error && <p className={styles.error}>Error loading campers: {error}</p>}
+    </>
   );
 };
 
 export default CamperList;
-

@@ -1,102 +1,141 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { fetchCatalog, fetchCatalogById } from './operations.js';
-import { selectCampers,selectActiveCamperId } from './selectors.js';
-// import { selectNameFilter } from '../filters/selectors';
+// import { 
+   
+//   createSlice } from '@reduxjs/toolkit';
+// import { fetchCatalog, fetchCatalogById } from './operations.js';
 
-export const handlePending = state => {
-  state.isLoading = true;
-};
 
-export const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
+// export const handlePending = state => {
+//   state.isLoading = true;
+// };
 
-const campersSlice = createSlice({
-  name: 'campers',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-    // isModalOpen: false,
-    activeCamperId: null,
-  },
-  reducers: {
-    // toggleModal(state) {
-    //   state.isModalOpen = !state.isModalOpen;
-    // },
-    setActiveCamperId(state, action) {
-      state.activeCamperId = action.payload;
-    },
-    clearActiveCamperId(state) {
-      state.activeCamperId = null;
-    },
-  },
-  extraReducers: builder => {
-    builder
-      .addCase(fetchCatalog.rejected, handleRejected)
-      .addCase(fetchCatalog.pending, handlePending)
-      .addCase(fetchCatalog.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
-        // console.log(action.payload);
-      })
-      .addCase(fetchCatalogById.rejected, handleRejected)
-      .addCase(fetchCatalogById.pending, handlePending)
-      .addCase(fetchCatalogById.fulfilled,(state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.activeCamperId = action.payload;
-         console.log(state.activeCamperId);
-      });
-    //   .addCase(addContact.rejected, handleRejected)
-    //   .addCase(addContact.pending, handlePending)
-    //   .addCase(addContact.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = null;
-    //     state.items.push(action.payload);
-    //   })
-    //   .addCase(deleteContact.rejected, handleRejected)
-    //   .addCase(deleteContact.pending, handlePending)
-    //   .addCase(deleteContact.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = null;
-    //     const index = state.items.findIndex(
-    //       task => task.id === action.payload.id
-    //     );
-    //     state.items.splice(index, 1);
-    //   })
-    //   .addCase(editContact.rejected, handleRejected)
-    //   .addCase(editContact.pending, handlePending)
-    //   .addCase(editContact.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = null;
-    //     const index = state.items.findIndex(
-    //       task => task.id === action.payload.id
-    //     );
-    //     state.items[index] = action.payload;
-    //   })
-    //   .addCase(logOut.fulfilled, state => {
-    //     state.items = [];
-    //     state.error = null;
-    //     state.isLoading = false;
-    //   });
-  },
-});
+// export const handleRejected = (state, action) => {
+//   state.isLoading = false;
+//   state.error = action.payload;
+// };
 
-// export const { toggleModal, setActiveCamperId, clearActiveCampertId } =
-// campersSlice.actions;
-export const { setActiveCamperId, clearActiveCampertId } = campersSlice.actions;
-export const campersReducer = campersSlice.reducer;
+// const campersSlice = createSlice({
+//   name: 'campers',
+//   initialState: {
+//     items: [],
+//     isLoading: false,
+//     error: null,
+    
+//   },
+//   reducers: {
+   
+//     setActiveCamperId(state, action) {
+//       state.activeCamperId = action.payload;
+//     },
+//     clearActiveCamperId(state) {
+//       state.activeCamperId = null;
+//     },
+//   },
+//   extraReducers: builder => {
+//     builder
+//       .addCase(fetchCatalog.rejected, handleRejected)
+//       .addCase(fetchCatalog.pending, handlePending)
+//       .addCase(fetchCatalog.fulfilled, (state, action) => {
+//         state.isLoading = false;
+//         state.error = null;
+//         state.items = action.payload;
+       
+//       })
+//       .addCase(fetchCatalogById.rejected, handleRejected)
+//       .addCase(fetchCatalogById.pending, handlePending)
+//       .addCase(fetchCatalogById.fulfilled,(state, action) => {
+//         state.isLoading = false;
+//         state.error = null;
+//         state.activeCamperId = action.payload;
+//         console.log(state.activeCamperId);
+//       });
+   
+//   },
+// });
 
-// export const selectFilteredCampers = createSelector(
-//   [selectCampers, selectNameFilter],
-//   (campers, filter) => {
-//     return campers.filter(
-//       camper =>
-//         camper.name.toLowerCase().includes(filter.toLowerCase()) ||
-//         camper.number.includes(filter)
-//     );
-//   }
-// );
+
+// export const { setActiveCamperId, clearActiveCampertId } = campersSlice.actions;
+// export const campersReducer = campersSlice.reducer;
+
+
+// import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+//      const initialState = {
+//        items: [],
+//        isLoading: false,
+//        error: null,
+//      };
+
+//      export const fetchCampers = createAsyncThunk('campers/fetchCampers', async () => {
+//        const response = await fetch('https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers');
+//        return response.json();
+//      });
+
+//      const campersSlice = createSlice({
+//        name: 'campers',
+//        initialState,
+//        extraReducers(builder) {
+//          builder
+//            .addCase(fetchCampers.pending, (state) => {
+//              state.isLoading = true;
+//              state.error = null;
+//            })
+//            .addCase(fetchCampers.fulfilled, (state, action) => {
+//              state.isLoading = false;
+//              state.items = action.payload.items; // Оновлення items
+//            })
+//            .addCase(fetchCampers.rejected, (state, action) => {
+//              state.isLoading = false;
+//              state.error = action.error.message;
+//            });
+//        },
+//      });
+
+//      export const campersReducer = campersSlice.reducer;
+
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+   const initialState = {
+     items: [],
+     isLoading: false,
+     error: null,
+     activeCamperId: null,
+     filter: '',
+   };
+
+   export const fetchCampers = createAsyncThunk('campers/fetchCampers', async () => {
+     const response = await fetch('https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers');
+     return response.json();
+   });
+
+   const campersSlice = createSlice({
+     name: 'campers',
+     initialState,
+     reducers: {
+       setActiveCamperId: (state, action) => {
+         state.activeCamperId = action.payload;
+       },
+       setFilter: 
+        (state, action) => {
+          state.filter = action.payload;
+        },
+       
+     },
+     extraReducers(builder) {
+       builder
+         .addCase(fetchCampers.pending, (state) => {
+           state.isLoading = true;
+           state.error = null;
+         })
+         .addCase(fetchCampers.fulfilled, (state, action) => {
+           state.isLoading = false;
+           state.items = action.payload.items; 
+         })
+         .addCase(fetchCampers.rejected, (state, action) => {
+           state.isLoading = false;
+           state.error = action.error.message;
+         });
+     },
+   });
+
+   export const { setActiveCamperId } = campersSlice.actions; // Додаємо експорт
+   export const campersReducer = campersSlice.reducer;

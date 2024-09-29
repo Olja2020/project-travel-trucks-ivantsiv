@@ -1,26 +1,20 @@
-import { NavLink } from "react-router-dom";
-import Logo from "../logo/Logo.jsx";
-import css from "./Header.module.css";
-
+import { NavLink } from 'react-router-dom';
+import css from './Header.module.css';
 const Header = () => {
   return (
-    <div className={css.headerSection}>
-      <header className={css.headerWrapper}>
-        <div className={css.headerWrapperLogo}>
-          <Logo />
+    <header className={css.container}>
+      <nav className={css.navigation}>
+        <NavLink className={css.logo} to="/">
+          Travel<span className={css.logo_accent}>Trucks</span>
+        </NavLink>
+        <div className={css.menu}>
+          <NavLink className={css.link} to="/">
+            Home
+          </NavLink>
+          <NavLink to="/catalog">Catalog</NavLink>
         </div>
-        <nav className={css.nav}>
-          <div className={css.container_links}>
-            <NavLink className={css.link} to="/">
-              Home
-            </NavLink>
-            <NavLink className={css.link} to="/catalog">
-              Catalog
-            </NavLink>
-          </div>
-        </nav>
-      </header>
-    </div>
+      </nav>
+    </header>
   );
 };
 
