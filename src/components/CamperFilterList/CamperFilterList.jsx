@@ -1,20 +1,20 @@
 
 
 
-import { useSelector, useDispatch } from 'react-redux';
-     import { Suspense, useEffect, } from 'react'; 
-     import Camper from '../Camper/Camper'; // Оголошення Camper як lazy
-     import css from './CamperFilterList.module.css';
-     import { selectError, selectIsLoading } from '../../redux/campers/selectors';
+//import { useSelector, useDispatch } from 'react-redux';
+     //import { Suspense, useEffect, } from 'react'; 
+     //import Camper from '../Camper/Camper'; // Оголошення Camper як lazy
+     //import css from './CamperFilterList.module.css';
+    // import { selectError, selectIsLoading } from '../../redux/campers/selectors';
      
-     import { fetchCampers } from '../../redux/campers/slice'; 
+     //import { fetchCampers } from '../../redux/campers/slice'; 
      
       const CamperFilterList = () => {
       
-       const dispatch = useDispatch();
+       //const dispatch = useDispatch();
        
-       const isLoading = useSelector(selectIsLoading);
-       const error = useSelector(selectError);
+       //const isLoading = useSelector(selectIsLoading);
+       //const error = useSelector(selectError);
        
 
 //+=+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

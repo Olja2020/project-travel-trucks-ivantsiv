@@ -1,5 +1,6 @@
 .container{
-    background-color: #F2F4F7;
+    margin: 0 auto; 
+    width: 1440px;
 }
 .navigation{
     display: flex;
@@ -8,7 +9,11 @@
     /* align-content: center; */
     justify-content: flex-start;
     gap:200px;
-    align-items: center;}
+    align-items: center;
+    width: 1440px;
+    margin: 0 auto; 
+    background-color: #F2F4F7;
+}
 .logo{
 padding: 28px 0 28px 64px;
 color: #101828;

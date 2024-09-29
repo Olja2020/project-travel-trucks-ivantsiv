@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, 
+  //useSelector 
+  } from 'react-redux';
 import styles from './Camper.module.css';
 import { setActiveCamperId } from '../../redux/campers/slice.js';
-import { selectActiveCamperId } from '../../redux/campers/selectors.js';
+//import { selectActiveCamperId } from '../../redux/campers/selectors.js';
 
 const Camper = ({ camper }) => {
   const dispatch = useDispatch();
-  const activeCamperId = useSelector(selectActiveCamperId);
+  //const activeCamperId = useSelector(selectActiveCamperId);
 
   const handleDetails = () => {
     dispatch(setActiveCamperId(camper.id));

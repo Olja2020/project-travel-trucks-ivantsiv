@@ -5,6 +5,7 @@
   width: 1440px;
   height: 696px;
   padding-left: 64px;
+  margin: 0 auto;
 }
 .section {
   background-image: url(../../images/Background.jpg);
