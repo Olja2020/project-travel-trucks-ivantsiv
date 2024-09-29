@@ -14,11 +14,6 @@ import {
 //import storage from "redux-persist/lib/storage";
 // import { authReducer } from "./auth/slice";
 
-// const authPersistConfig = {
-//   key: "auth",
-//   storage,
-//   whitelist: ["token"],
-// };
 
 export const store = configureStore({
   reducer: {
