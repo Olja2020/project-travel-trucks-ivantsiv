@@ -1,4 +1,4 @@
-import css from'./CamperDetailsGallery.module.css';
+//import css from'./CamperDetailsGallery.module.css';
 
 const CamperDetailsGallery=({camper})=>{
     return(<>

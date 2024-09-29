@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import css from './CamperDetailsPage.module.css';
-import { InfinitySpin } from 'react-loader-spinner';
+
 import BookingForm from '../../components/BookingForm/BookingForm';
-import CamperDetailsGallery from '../../components/CamperDetailsGallery/CamperDetailsGallery';
+//import CamperDetailsGallery from '../../components/CamperDetailsGallery/CamperDetailsGallery';
 
 const CamperDetailsPage = () => {
   const { id } = useParams(); // Получаем id из URL
@@ -24,6 +24,7 @@ const CamperDetailsPage = () => {
       } catch (err) {
         setError('Failed to fetch camper details');
         setIsLoading(false);
+        console.log(err);
       }
     };
 
@@ -40,14 +41,7 @@ const CamperDetailsPage = () => {
 
   return (
     <>
-    {/* {isLoading && !error && (
-        <InfinitySpin
-          visible={true}
-          width="200"
-          color="#FFC531"
-          ariaLabel="infinity-spin-loading"
-        />
-      )} */}
+    
       <div className={css.details}>
         <h2>{camper.name}</h2>
         {/* <CamperDetailsGallery camper={camper}/> */}

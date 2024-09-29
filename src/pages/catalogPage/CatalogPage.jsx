@@ -7,11 +7,10 @@ import { useDispatch} from 'react-redux';
 //   selectError,
 //   selectIsLoading,
 // } from '../../redux/campers/selectors.js';
-// import { InfinitySpin } from 'react-loader-spinner';
 import CamperList from '../../components/CamperList/CamperList.jsx';
 // import CamperFilterList from '../../components/CamperFilterList/CamperFilterList.jsx';
 //import VehicleEquipment from '../../components/vehicleEquipmentFilters/VehicleEquipmentFilters.jsx';
-import LocationTravelTrucks  from '../../components/LocationTravelTrucks/LocationTravelTrucks.jsx';
+//import LocationTravelTrucks  from '../../components/LocationTravelTrucks/LocationTravelTrucks.jsx';
 import CamperFilterlist from '../../components/CamperFilterList/CamperFilterList.jsx';
 import FilterForm from '../../components/FilterForm/FilterForm.jsx';
 const CatalogPage = () => {
@@ -33,14 +32,7 @@ const CatalogPage = () => {
          <FilterForm></FilterForm>
          <CamperFilterlist></CamperFilterlist>
       </aside>
-      {/* {isLoading && !error && (
-        <InfinitySpin
-          visible={true}
-          width="200"
-          color="#FFC531"
-          ariaLabel="infinity-spin-loading"
-        />
-      )} */}
+      
       <div className={css.listCampers}>
         <CamperList/>
       </div>

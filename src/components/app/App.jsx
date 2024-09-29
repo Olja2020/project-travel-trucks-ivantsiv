@@ -10,7 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 
 
 import { Toaster } from 'react-hot-toast';
-//import { ClipLoader } from 'react-spinner';
+
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const NotFoundPage = lazy(() =>

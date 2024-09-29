@@ -12,12 +12,14 @@ import axios from 'axios';
 // const CamperSearch = () => {
   //import axios from 'axios';
   import { useEffect, useState } from 'react';
-  import { useSelector, useDispatch } from 'react-redux'; // Assuming you're using Redux
+  import { 
+    //useSelector,
+     useDispatch } from 'react-redux'; // Assuming you're using Redux
   import { fetchCampers } from '../../redux/campers/slice'; // Assuming you have this slice
   
   const CamperSearch = () => {
     const dispatch = useDispatch();
-    const campers = useSelector((state) => state.campers.campers); // Get campers from Redux state
+    //const campers = useSelector((state) => state.campers.campers); // Get campers from Redux state
     
     const [location, setLocation] = useState('Ukraine, Kyiv');
     const [ac, setAC] = useState(true);
@@ -85,7 +87,7 @@ import axios from 'axios';
     const { name, checked } = event.target;
     console.log(name, checked);
     setFilters({ ...filters, [name]: checked });
-    console.log(  [name].checked );
+    console.log(  setLocation, setAC, setTransmission, setKitchen,setTV,setBathroom, setForm  );
   };
 
 
