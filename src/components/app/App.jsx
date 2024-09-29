@@ -1,14 +1,14 @@
 import './App.module.css';
 import Layout from '../Layout/Layout';
 
-import { useDispatch, useSelector } from 'react-redux';
+//import { useDispatch, useSelector } from 'react-redux';
 import { lazy, useEffect, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 
 
 import { Toaster } from 'react-hot-toast';
-import { ClipLoader } from 'react-spinner';
+//import { ClipLoader } from 'react-spinner';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const NotFoundPage = lazy(() =>
